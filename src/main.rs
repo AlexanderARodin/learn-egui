@@ -8,7 +8,7 @@ fn main() -> Result<(), eframe::Error> {
         ..Default::default()
     };
     eframe::run_native(
-        "My egui App",
+        "egui test app",
         options,
         Box::new(|_cc| Box::<MyApp>::default()),
     )
