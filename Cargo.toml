@@ -1,0 +1,10 @@
+[package]
+name = "hello_world"
+version = "0.1.0"
+license = "MIT"
+edition = "2021"
+
+
+[dependencies]
+
+env_logger = "0.10"
