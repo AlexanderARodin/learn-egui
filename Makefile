@@ -5,7 +5,7 @@ help:
 	@echo 'there is no help.. yet'
 
 run: release size
-	@./target/release/$(binname)
+	@cargo run
 
 edit:
 	@nvim ./src/main.rs
