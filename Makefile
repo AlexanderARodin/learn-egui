@@ -1,4 +1,4 @@
-binname="learn-egui"
+binname="hello_world"
 
 
 help:

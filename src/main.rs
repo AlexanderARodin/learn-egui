@@ -1,4 +1,3 @@
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
 use eframe::egui;
 
@@ -15,6 +14,9 @@ fn main() -> Result<(), eframe::Error> {
     )
 }
 
+// ------------ //
+// -- Models -- //
+// ------------ //
 struct MyApp {
     name: String,
     age: u32,
@@ -23,8 +25,8 @@ struct MyApp {
 impl Default for MyApp {
     fn default() -> Self {
         Self {
-            name: "Arthur".to_owned(),
-            age: 42,
+            name: "nonenamus".to_owned(),
+            age: 17,
         }
     }
 }
@@ -32,7 +34,7 @@ impl Default for MyApp {
 impl eframe::App for MyApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-            ui.heading("My egui Application");
+            ui.heading("egui app HEAD");
             ui.horizontal(|ui| {
                 let name_label = ui.label("Your name: ");
                 ui.text_edit_singleline(&mut self.name)
