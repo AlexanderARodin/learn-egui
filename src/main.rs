@@ -5,7 +5,7 @@ fn main() -> Result<(), eframe::Error> {
     println!("MAIN has beed entered..");
 
     let options = eframe::NativeOptions {
-        initial_window_size: Some(egui::vec2(100., 300.)),
+        initial_window_size: Some(egui::vec2(200., 300.)),
         ..Default::default()
     };
     eframe::run_native(
