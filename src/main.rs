@@ -1,52 +1,49 @@
+#![allow(non_snake_case)]
 use eframe::egui;
 
 fn main() -> Result<(), eframe::Error> {
-    env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
+    println!("MAIN has beed entered..");
+
     let options = eframe::NativeOptions {
-        initial_window_size: Some(egui::vec2(320.0, 240.0)),
+        initial_window_size: Some(egui::vec2(100., 300.)),
         ..Default::default()
     };
     eframe::run_native(
-        "egui test app",
+        "some text 1",
         options,
-        Box::new(|_cc| Box::<MyApp>::default()),
-    )
+        Box::new( |_cc| Box::<RaaDataModel>::default()),
+   )
 }
 
 // ------------ //
 // -- Models -- //
 // ------------ //
-struct MyApp {
-    name: String,
-    age: u32,
-}
 
-impl Default for MyApp {
+struct RaaDataModel {
+    txt:String,
+}
+impl Default for RaaDataModel {
     fn default() -> Self {
-        Self {
-            name: "nonenamus".to_owned(),
-            age: 17,
-        }
+        Self {txt:"<empty>".to_owned(),}
     }
 }
 
-impl eframe::App for MyApp {
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {
-            ui.heading("egui app HEAD 222");
-            ui.vertical(|ui| {
-                ui.horizontal(|ui| {
-                    let name_label = ui.label("Your name: ");
-                    ui.text_edit_singleline(&mut self.name)
-                        .labelled_by(name_label.id);
-                });
-            ui::Slider::new(&mut self.age, 0..=120).text("age");
+impl eframe::App for RaaDataModel {
+    fn update( &mut self, ctx: &egui::Context, _frame: &mut eframe::Frame ) {
+        egui::CentralPanel::default().show( ctx, |ui| {
+            ui.label("lbl - A");
+            ui.label("lbl - B");
+            ui.label("lbl - C");
+            ui.horizontal( |ui| {
+                ui.label("lbl - 1");
+                ui.label("lbl - 2");
+                ui.label("lbl - 3");
             });
-            ui.add(egui::Slider::new(&mut self.age, 0..=120).text("age"));
-            if ui.button("Click each year").clicked() {
-                self.age += 1;
-            }
-            ui.label(format!("Hello '{}', age {}", self.name, self.age));
+            let aLbl = ui.label( format!("CONTAINER: [{}]", self.txt) );
+            ui.text_edit_singleline(&mut self.txt)
+                .labelled_by(aLbl.id);
         });
     }
 }
+
+
